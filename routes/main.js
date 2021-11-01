@@ -42,7 +42,7 @@ router.get('/trendings',async(req,res)=>{
 // @access   Public
 router.get('/search',async(req,res)=>{
     try {
-        const s = req.query.text.toString();
+        const s = req.query.text.toString(); // search query field
         console.log(s);
         const data = await Videos.find({
             $text: { $search: s }
@@ -60,7 +60,8 @@ router.get('/search',async(req,res)=>{
 // @access   Public
 router.get('/videos',async(req,res)=>{
     try {
-        let para = req.query.para;
+        
+        let para = req.query.para; //for descending para shoudl equal to -1 or  for ascending para should equal to 1
         const data = await Videos.find().sort({'publishingTime' : para});
         res.status(200).json({data : data});
     } catch (error) {
