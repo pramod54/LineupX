@@ -5,7 +5,7 @@ dotenv.config();
 const connectDB = require('./utils/db');
 const jobs  = require('./utils/schedule');
 connectDB();
-//jobs();
+jobs();
 app.use(express.json({extended : false}));
 app.use('/youtube',require('./routes/main'));
 
